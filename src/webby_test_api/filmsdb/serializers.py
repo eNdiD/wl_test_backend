@@ -9,8 +9,6 @@ class ActorSerializer(serializers.ModelSerializer):
 
 
 class FilmSerializer(serializers.ModelSerializer):
-    actors = ActorSerializer(many=True)
-
     class Meta:
         model = Film
         fields = ('pk', 'title', 'year', 'format', 'actors')

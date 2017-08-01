@@ -23,6 +23,7 @@ from filmsdb import views as filmsdb_views
 router = routers.DefaultRouter()
 
 router.register(r'films', filmsdb_views.FilmViewSet, 'films')
+router.register(r'actors', filmsdb_views.ActorViewSet, 'actors')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

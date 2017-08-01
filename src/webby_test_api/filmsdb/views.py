@@ -1,17 +1,20 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins
 from rest_framework.response import Response
 from filmsdb.models import Film, Actor
-from filmsdb.serializers import FilmSerializer
+from filmsdb.serializers import FilmSerializer, ActorSerializer
 
 
-class FilmViewSet(viewsets.ViewSet):
-    def list(self, request):
-        queryset = Film.objects.all()
-        serializer = FilmSerializer(queryset, many=True, context={'request': request})
-        return Response(serializer.data)
+class FilmViewSet(viewsets.GenericViewSet,
+                  mixins.ListModelMixin,
+                  mixins.RetrieveModelMixin,
+                  mixins.CreateModelMixin,
+                  mixins.UpdateModelMixin,
+                  mixins.DestroyModelMixin):
+    queryset = Film.objects.all()
+    serializer_class = FilmSerializer
 
-    def retrieve(self, request, pk=None):
-        queryset = Film.objects.all()
-        work = get_object_or_404(queryset, pk=pk)
-        serializer = FilmSerializer(queryset, context={'request': request})
-        return Response(serializer.data)
+
+class ActorViewSet(viewsets.GenericViewSet,
+                   mixins.ListModelMixin):
+    queryset = Actor.objects.all()
+    serializer_class = ActorSerializer
