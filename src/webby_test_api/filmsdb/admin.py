@@ -12,9 +12,9 @@ class FilmAdmin(admin.ModelAdmin):
 
 class ActorAdmin(admin.ModelAdmin):
     list_per_page = 20
-    list_display = ['first_name', 'last_name']
-    list_display_links = ['first_name', 'last_name']
-    search_fields = ['first_name', 'last_name']
+    list_display = ['name',]
+    list_display_links = ['name',]
+    search_fields = ['name',]
 
 
 admin.site.register(Film, FilmAdmin)

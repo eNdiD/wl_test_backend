@@ -48,16 +48,10 @@ class Actor(models.Model):
         verbose_name_plural = u'Актеры'
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name if self.last_name else self.first_name
+        return self.name
 
-    first_name = models.CharField(
+    name = models.CharField(
         verbose_name=u'Имя',
         max_length=255,
         blank=False,
-    )
-
-    last_name = models.CharField(
-        verbose_name=u'Фамилия',
-        max_length=255,
-        blank=True,
     )
