@@ -15,6 +15,8 @@ class FilmViewSet(viewsets.GenericViewSet,
 
 
 class ActorViewSet(viewsets.GenericViewSet,
-                   mixins.ListModelMixin):
+                   mixins.ListModelMixin,
+                   mixins.CreateModelMixin,
+                   mixins.DestroyModelMixin):
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
